@@ -1,22 +1,19 @@
-/* eslint-disable linebreak-style */
 /* eslint-disable react/jsx-one-expression-per-line */
 import './App.css';
 import React from 'react';
-// eslint-disable-next-line import/extensions, import/no-unresolved
-import useApi from './hooks/useApi';
+import { Link } from 'react-router-dom';
+import targetMuscleList from './data/targetMuscleList';
 
 function App() {
-  const API_URL = 'https://exercisedb.p.rapidapi.com/exercises/targetList';
-  const { data, loading, error } = useApi(API_URL);
   return (
     <div className="App">
 
-      {loading && <p>Loading. . .</p>}
-
-      {error && <p>Error: {error}</p>}
-
-      {/* eslint-disable-next-line react/no-array-index-key */}
-      {data && data.map((item, index) => <p key={index}>{item}</p>)}
+      {targetMuscleList.map((muscle, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <Link to={`/${muscle}`} key={index}>
+          <p>{muscle}</p>
+        </Link>
+      ))}
 
     </div>
   );

@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react';
 import EXERCISEDB_API_KEY from '../top-secret';
 
-// export interface Data {
-//   data: string
-// }
+export interface ExcerciseData {
+    bodyPart: 'string',
+    equipment: 'string',
+    gifUrl: 'string',
+    id: 'string',
+    name: 'string',
+    target: 'string'
+}
 
 interface ApiResponse {
-  data?: string[];
+  data?: ExcerciseData[];
   loading: boolean;
   error: string;
 }

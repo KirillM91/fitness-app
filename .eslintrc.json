@@ -7,7 +7,8 @@
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
-        "airbnb"
+        "airbnb",
+        "plugin:react/jsx-runtime"
     ],
     "overrides": [
     ],
@@ -22,14 +23,33 @@
     ],
     "rules": {
         "linebreak-style": [
-            "warn", 
-            "windows"
+            0
         ],
         "react/jsx-filename-extension": [
-            1, { "extensions": [".js", ".tsx", "jsx"] }
+            1, { "extensions": [".js", ".tsx", "jsx", ".ts"] }
         ],      
         "react/jsx-one-expression-per-line": [
             1, { "allow": "single-child" }
+        ],
+        "comma-dangle": [
+            0
+        ],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+              "js": "never",
+              "jsx": "never",
+              "ts": "never",
+              "tsx": "never"
+            }
         ]
+    },
+    "settings": {
+        "import/resolver": {
+          "node": {
+            "extensions": [".js", ".jsx", ".ts", ".tsx", ".d.ts"]
+          }
+        }
     }
 }
