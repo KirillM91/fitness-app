@@ -1,20 +1,6 @@
 import { useState, useEffect } from 'react';
 import EXERCISEDB_API_KEY from '../top-secret';
-
-export interface ExcerciseData {
-    bodyPart: 'string',
-    equipment: 'string',
-    gifUrl: 'string',
-    id: 'string',
-    name: 'string',
-    target: 'string'
-}
-
-interface ApiResponse {
-  data?: ExcerciseData[];
-  loading: boolean;
-  error: string;
-}
+import { ApiResponse } from '../interfaces/interfaces';
 
 const options = {
   method: 'GET',

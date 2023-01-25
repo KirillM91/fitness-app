@@ -2,18 +2,21 @@
 import './App.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import targetMuscleList from './data/targetMuscleList';
 
 function App() {
   return (
     <div className="App">
+      <Link to="/exercise_database">
+        <p>exercise database</p>
+      </Link>
 
-      {targetMuscleList.map((muscle, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <Link to={`/${muscle}`} key={index}>
-          <p>{muscle}</p>
-        </Link>
-      ))}
+      <Link to="/workout_routines">
+        <p>workout routines</p>
+      </Link>
+
+      <Link to="/progress_tracking">
+        <p>progress tracking</p>
+      </Link>
 
     </div>
   );
