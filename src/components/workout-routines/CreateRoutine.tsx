@@ -3,11 +3,13 @@
 import React, { useState } from 'react';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { Workout } from '../../interfaces/interfaces';
+import AddExerciseView from './AddExerciseView';
 
 function CreateRoutine() {
   const [workoutRoutines, setWorkoutRoutines] = useLocalStorage<Workout[]>('workoutRoutines', []);
-  const [newWorkout, setNewWorkout] = useState<Workout>({ name: '', exercises: [] });
-  const [newExercise, setNewExercise] = useState('');
+  const [newWorkout, setNewWorkout] = useState<Workout>({ name: 'Workout Name', exercises: [] });
+
+  const [addExerciseView, setAddExerciseView] = useState(false);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -15,16 +17,9 @@ function CreateRoutine() {
     setNewWorkout({ name: '', exercises: [] });
   }
 
-  function handleAddExercise(e: React.MouseEvent<HTMLButtonElement>) {
-    e.preventDefault();
-    setNewWorkout({ ...newWorkout, exercises: [...newWorkout.exercises, newExercise] });
-    setNewExercise('');
-  }
-
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="workoutName">Workout Name: </label>
         <input
           id="workoutName"
           type="text"
@@ -33,19 +28,24 @@ function CreateRoutine() {
         />
         <br />
 
-        <label htmlFor="exercise">Exercise: </label>
-        <input
-          id="exercise"
-          type="text"
-          value={newExercise}
-          onChange={(event) => setNewExercise(event.target.value)}
-        />
+        {addExerciseView
+          ? (
+            <AddExerciseView
+              setAddExerciseView={setAddExerciseView}
+              newWorkout={newWorkout}
+              setNewWorkout={setNewWorkout}
+            />
+          )
+
+          : <button type="submit" onClick={() => setAddExerciseView(true)}>Add Exercise</button>}
+
         <br />
 
-        <button type="submit" onClick={handleAddExercise}>Add Exercise</button>
-        <br />
+        {newWorkout.exercises.map((exercise: string, index: number) => (
+          <p key={index}>{exercise}</p>
+        ))}
 
-        <input type="submit" value="Save Workout" />
+        <button type="submit">Save Workout</button>
 
       </form>
     </div>

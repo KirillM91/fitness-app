@@ -22,7 +22,7 @@ function ExerciseList() {
           <p>{exercise.equipment}</p>
           <p>{exercise.name}</p>
           <p>{exercise.target}</p>
-          <img src={exercise.gifUrl} alt={exercise.name} />
+          <img src={exercise.gifUrl} alt={exercise.name} loading="lazy" />
         </div>
       ))}
 

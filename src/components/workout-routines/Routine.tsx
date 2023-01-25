@@ -1,5 +1,4 @@
 /* eslint-disable react/no-array-index-key */
-import { useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { Workout } from '../../interfaces/interfaces';
@@ -9,21 +8,13 @@ function Routine() {
   const routine = useParams();
   const [workoutRoutine, setWorkoutRoutine] = useLocalStorage<Workout[]>('workoutRoutines', []);
 
-  // function handleDeleteWorkout() {
-  //   // Create a new array that doesn't include the workout to be deleted
-  //   const updatedWorkoutRoutines = workoutRoutine.filter(
-  //     (workout: Workout) => workout.name !== routine.workout
-  //   );
-  //   setWorkoutRoutine(updatedWorkoutRoutines);
-  //   navigate('/workout_routines');
-  // }
-
-  const handleDeleteWorkout = useCallback((index: number) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    setWorkoutRoutine((prevWorkoutRoutine: any) => prevWorkoutRoutine.filter(
+  function handleDeleteWorkout(index: number) {
+    // Create a new array that doesn't include the workout to be deleted
+    const updatedWorkoutRoutines = workoutRoutine.filter(
       (workout: Workout, i: number) => i !== index
-    ));
-  }, [setWorkoutRoutine]);
+    );
+    setWorkoutRoutine(updatedWorkoutRoutines);
+  }
 
   return (
     <>
