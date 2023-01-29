@@ -10,11 +10,18 @@ function AddExerciseView({ setAddExerciseView, newWorkout, setNewWorkout }: any)
   function handleAddExercise(e: React.MouseEvent<HTMLDivElement>, name: string) {
     e.preventDefault();
     setClicked(!clicked);
-    setNewWorkout({ ...newWorkout, exercises: [...newWorkout.exercises, name] });
+    if (newWorkout.exercises.includes(name)) {
+      setNewWorkout({
+        ...newWorkout,
+        exercises: newWorkout.exercises.filter((exe: string) => exe !== name)
+      });
+    } else {
+      setNewWorkout({ ...newWorkout, exercises: [...newWorkout.exercises, name] });
+    }
   }
   return (
     <>
-      <button type="button" onClick={() => setAddExerciseView(false)}>Back</button>
+      <button type="button" onClick={() => setAddExerciseView(false)}>Done</button>
 
       {loading && <p>Loading. . .</p>}
 

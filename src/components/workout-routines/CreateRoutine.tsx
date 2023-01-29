@@ -1,20 +1,29 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/no-array-index-key */
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { Workout } from '../../interfaces/interfaces';
 import AddExerciseView from './AddExerciseView';
 
 function CreateRoutine() {
+  const navigate = useNavigate();
   const [workoutRoutines, setWorkoutRoutines] = useLocalStorage<Workout[]>('workoutRoutines', []);
   const [newWorkout, setNewWorkout] = useState<Workout>({ name: 'Workout Name', exercises: [] });
-
   const [addExerciseView, setAddExerciseView] = useState(false);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setWorkoutRoutines([...workoutRoutines, newWorkout]);
+    await setWorkoutRoutines([...workoutRoutines, newWorkout]);
     setNewWorkout({ name: '', exercises: [] });
+    navigate('/workout_routines/');
+  }
+
+  function handleDeleteExercise(index: number) {
+    const updatedExerciseList = newWorkout.exercises.filter(
+      (exercise: string, i: number) => i !== index
+    );
+    setNewWorkout({ ...newWorkout, exercises: updatedExerciseList });
   }
 
   return (
@@ -42,8 +51,12 @@ function CreateRoutine() {
         <br />
 
         {newWorkout.exercises.map((exercise: string, index: number) => (
-          <p key={index}>{exercise}</p>
+          <>
+            <p key={index}>{exercise}</p>
+            <button type="button" onClick={() => handleDeleteExercise(index)}>Remove</button>
+          </>
         ))}
+        <br />
 
         <button type="submit">Save Workout</button>
 
