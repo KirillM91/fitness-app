@@ -17,3 +17,11 @@ data?: ExcerciseData[];
 loading: boolean;
 error: string;
 }
+
+export interface Exercise {
+  name: string;
+  weights: {
+    date: Date;
+    weight: number;
+  }[];
+}

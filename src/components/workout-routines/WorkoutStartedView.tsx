@@ -2,14 +2,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useLocalStorage from '../../hooks/useLocalStorage';
-
-interface Exercise {
-  name: string;
-  weights: {
-    date: Date;
-    weight: number;
-  }[];
-}
+import { Exercise } from '../../interfaces/interfaces';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function WorkoutStartedView({ currentWorkout }: any) {
@@ -40,6 +33,7 @@ function WorkoutStartedView({ currentWorkout }: any) {
 
   function finishWorkout(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    // eslint-disable-next-line no-alert
     alert('Good Job!');
     navigate('/workout_routines/');
   }
