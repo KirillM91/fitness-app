@@ -1,0 +1,35 @@
+@import './base_main';
+@import './exercise-database/base_exercise-database';
+@import './workout-routines/base_workout-routines';
+@import './workout-routines/base_create-routine';
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  height: 100vh;  
+}
+
+a {
+  text-decoration: none;
+}
+
+.exercise-database-text, 
+.workout-routines-text, 
+.progress-tracing-text {
+  width: 33vw;
+}
+
+.paused {
+  animation-play-state: paused;
+  height: 50px;
+  width: 50px;
+}
+
+.clicked {
+  border-radius: 5px;
+  box-shadow: 10px 0 #a44500;
+}

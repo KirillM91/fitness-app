@@ -4,12 +4,12 @@ export interface Workout {
 }
 
 export interface ExcerciseData {
-  bodyPart: 'string',
-  equipment: 'string',
-  gifUrl: 'string',
-  id: 'string',
-  name: 'string',
-  target: 'string'
+  name: string;
+  type: string;
+  muscle: string;
+  equipment: string;
+  difficulty: string;
+  instructions: string;
 }
 
 export interface ApiResponse {

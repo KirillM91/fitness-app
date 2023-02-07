@@ -1,0 +1,83 @@
+.exercise-database-text-bg {
+  position: fixed;
+  height: 110%;
+  left: 165px;
+  bottom: -33px;
+  z-index: -1;
+
+  text {
+    stroke: #000f9227;
+    stroke-width: 3;
+  }
+}
+
+.exercise-database {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: fit-content;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 10px;
+  z-index: 10;
+
+  a {
+    font-family: 'Impact';
+    font-weight: 400;
+    font-size: 50px;
+    letter-spacing: 0.1em;
+    color: #000000;    
+  }
+}
+
+.exercise-list-title {
+  font-family: 'Impact';
+  font-weight: 400;
+  font-size: 97px;
+  letter-spacing: 0.1em;
+  color: #000000;
+  margin-bottom: 50px;
+}
+
+.exercise-list-exercise-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 10px;
+  margin: 0 10px 50px 20px;
+
+
+  .exercise-list-exercise-image{
+    grid-column: 1 / 2;
+    grid-row: 1 / 4;
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin-top: 5px;
+  }
+
+  .exercise-list-exercise-name {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    font-family: 'Impact';
+    font-size: 24px; 
+    letter-spacing: 0.1em;
+  }
+
+  .exercise-list-target {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    font-family: 'GFS Neohellenic', monospace;
+    font-size: 20px;
+  }
+
+  .exercise-list-equipment {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    font-family: 'GFS Neohellenic', monospace;
+    font-size: 20px;
+  }
+}

@@ -1,13 +1,15 @@
 const targetMuscleList = [
-  'back',
-  'cardio',
   'chest',
-  'lower arms',
-  'lower legs',
-  'neck',
+  'lats',
   'shoulders',
-  'upper arms',
-  'upper legs',
-  'waist'];
+  'biceps',
+  'triceps',
+  'quadriceps',
+  'hamstrings',
+  'abdominals',
+  'forearms',
+  'calves',
+  'glutes'
+];
 
 export default targetMuscleList;

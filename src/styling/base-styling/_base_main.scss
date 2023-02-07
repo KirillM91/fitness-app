@@ -1,0 +1,12 @@
+.navigation {
+  position: absolute; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  left: 0;
+
+  a {
+    text-decoration: none;
+  }
+}

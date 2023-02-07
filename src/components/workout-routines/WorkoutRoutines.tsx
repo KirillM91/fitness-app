@@ -3,21 +3,29 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Routines from '../../assets/Routines';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { Workout } from '../../interfaces/interfaces';
 
 function WorkoutRoutines() {
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const [workoutRoutine, setWorkoutRoutine] = useLocalStorage<Workout[]>('workoutRoutines', []);
+  const routinesTextClassName = 'workout-routines-text-bg';
 
   return (
     <div>
+      <Link to="/workout_routines/create_workout">
+        <button type="button" className="create-new-workout-button">
+          <span className="create-new-workout-button-plus-sign">
+            +
+          </span>
+        </button>
 
-      <h2>Saved Workouts:</h2>
+      </Link>
 
       {workoutRoutine.map((workout: Workout, index: number) => (
         <Link to={`/workout_routines/${workout.name}`} key={index}>
-          <div style={{ border: '1px solid red' }}>
+          <div className="workout-routine-box">
             <h3>{workout.name}</h3>
             <ul>
               {workout.exercises.map((exercise, i) => (
@@ -28,10 +36,7 @@ function WorkoutRoutines() {
         </Link>
       ))}
 
-      <Link to="/workout_routines/create_workout">
-        Create a new workout
-      </Link>
-
+      <Routines routinesTextClassName={routinesTextClassName} />
     </div>
   );
 }

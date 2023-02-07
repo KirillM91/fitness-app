@@ -1,33 +1,16 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useEffect, useState } from 'react';
-import fuzzysort from 'fuzzysort';
+import React, { useState } from 'react';
 import useApi from '../../hooks/useApi';
+import useSearch from '../../hooks/useSearch';
+import { ExcerciseData } from '../../interfaces/interfaces';
 
 // eslint-disable-next-line react/prop-types, @typescript-eslint/no-explicit-any
 function AddExerciseView({ setAddExerciseView, newWorkout, setNewWorkout }: any) {
-  const API_URL = 'https://exercisedb.p.rapidapi.com/exercises';
+  const API_URL = 'https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises?muscle=';
   const { data, loading, error } = useApi(API_URL);
   const [clicked, setClicked] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filteredExercises, setFilteredExercises] = useState(data);
-
-  useEffect(() => {
-    let APICallDelay: ReturnType<typeof setTimeout>;
-    if (data) {
-      APICallDelay = setTimeout(() => {
-        const results = fuzzysort
-          .go(searchTerm, data, { key: 'name' })
-          .map((result) => result.target);
-        setFilteredExercises(
-          data?.filter((exercise) => results.includes(exercise.name))
-        );
-      }, 1000);
-    }
-    return () => {
-      clearTimeout(APICallDelay);
-    };
-  }, [searchTerm, data]);
+  const { searchTerm, setSearchTerm, filteredExercises } = useSearch(data);
 
   function handleAddExercise(e: React.MouseEvent<HTMLDivElement>, name: string) {
     e.preventDefault();
@@ -42,11 +25,12 @@ function AddExerciseView({ setAddExerciseView, newWorkout, setNewWorkout }: any)
     }
   }
   return (
-    <>
-      <button type="button" onClick={() => setAddExerciseView(false)}>Done</button>
+    <div className="add-exercise-view">
+      <button type="button" onClick={() => setAddExerciseView(false)} className="done-button">Done</button>
       <br />
 
       <input
+        className="search-exercise"
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
@@ -58,22 +42,27 @@ function AddExerciseView({ setAddExerciseView, newWorkout, setNewWorkout }: any)
       {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
       {error && <p>Error: {error}</p>}
 
-      {data && filteredExercises?.map((exercise, index) => (
+      {/* eslint-disable-next-line max-len */}
+      {data && (searchTerm.length > 0 ? filteredExercises : data).map((exercise: ExcerciseData, index: number) => (
         <div
           // eslint-disable-next-line react/no-array-index-key
           key={index}
           onClick={(event) => handleAddExercise(event, exercise.name)}
-          className={(newWorkout.exercises.find((exe: string) => exe === exercise.name)) ? 'clicked' : ''}
+          className={`exercise-list-exercise-container ${(newWorkout.exercises.find((exe: string) => exe === exercise.name)) ? 'clicked' : ''}`}
         >
-          <p>
-            {exercise.name}
-            {exercise.equipment}
-            {exercise.target}
-          </p>
-          <img src={exercise.gifUrl} alt={exercise.name} loading="lazy" className="paused" />
+          <p className="exercise-list-exercise-name">{exercise.name.replace(/_/g, ' ')}</p>
+          <p className="exercise-list-target">{exercise.muscle.replace(/_/g, ' ')}</p>
+          <p className="exercise-list-equipment">{exercise.equipment.replace(/_/g, ' ')}</p>
+
+          <img
+            src=""
+            alt={exercise.name}
+            loading="lazy"
+            className="exercise-list-exercise-image"
+          />
         </div>
       ))}
-    </>
+    </div>
   );
 }
 

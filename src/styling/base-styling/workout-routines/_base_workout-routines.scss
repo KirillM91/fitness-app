@@ -1,0 +1,189 @@
+.workout-routines-text-bg {
+  position: fixed;
+  height: 114%;
+  left: 205px;
+  bottom: -25px;
+  z-index: -1;
+
+  text {
+    stroke: #a4440038;
+    stroke-width: 3;
+  }
+}
+
+.create-new-workout-button {
+  position: relative;
+  height: 90px;
+  width: 90px;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 5px;
+  top: 30px;
+  left: 30px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  
+  .create-new-workout-button-plus-sign {
+    font-family: 'Impact';
+    font-weight: 400;
+    font-size: 136px;
+    line-height: 80px;
+  }
+}
+
+.workout-routine-box {
+  background-color: rgba(255, 255, 255, 0.418);
+  border: 3px solid black;
+  border-radius: 5px;
+  margin: 30px;
+  padding: 30px;
+
+  h3 {
+    font-family: 'Impact';
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+    letter-spacing: 0.1em;
+    color: black;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    list-style-type: none;
+
+    li {
+      font-family: 'GFS Neohellenic', monospace;
+      color: black;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+
+
+.routine {
+  div {
+    height: 100vh;
+
+    ul {
+      margin: 20px;
+      list-style-type: none;
+
+      li {
+        font-family: 'Impact';
+        color: black;
+        margin-bottom: 15px;
+        font-size: 32px;
+      }
+    }
+
+    .delete-workout-button {
+      width: fit-content;
+      padding: 0 10px;
+      height: 35px;
+      font-size: 16px;
+      border: 3px solid black;
+      position: absolute;
+      background: #ffffff;
+      border-radius: 5px;
+      font-family: 'Impact';
+      letter-spacing: 0.1em;      
+      color: #000000;
+      cursor: pointer; 
+      top: 20px;
+      right: 20px;
+    }
+  }
+}
+
+h2 {
+  font-family: 'Impact';
+  font-weight: 400;
+  font-size: 60px;
+  letter-spacing: 0.1em;
+  color: #000000;
+  margin-bottom: 50px;
+  width: 80vw;
+}
+
+.start-workout-button,
+.finish-workout-button {
+  width: 285px;
+  height: 70px;
+  background: #000000;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Impact';
+  font-size: 32px;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  cursor: pointer;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.workout-started-view {
+  form {    
+    .exercise {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+      margin-bottom: 15px;
+
+      p {
+        font-family: 'Impact';
+        font-size: 24px;
+        line-height: 29px;
+        letter-spacing: 0.1em;
+        width: 200px;
+      }
+
+      div {
+        display: flex;
+        align-items: center;
+
+        .weight-input {
+          width: 43px;
+          height: 33px;
+          -webkit-appearance: none;
+          -moz-appearance: textfield;
+          border: 2px solid black;
+          border-radius: 5px;
+          font-size: 20px;
+          text-align: center;
+          font-weight: bolder;
+  
+          &:focus {
+            outline: 2px solid #a44500;
+          }
+
+          &:disabled {
+            border: none;
+            color: #000000;
+            background: transparent;
+          }
+        }
+
+        .exercise-done-button {
+          width: 33px;
+          height: 34px;
+          border: 2px solid black;
+          border-radius: 5px;
+          margin-left: 10px;
+          cursor: pointer;
+          font-size: 20px;
+          font-weight: bolder;
+
+          &:disabled {
+            border: 2px solid #16a800;
+            color: #16a800;
+          }
+        }
+      }
+    }
+  }
+}
+

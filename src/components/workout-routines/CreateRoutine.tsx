@@ -5,11 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { Workout } from '../../interfaces/interfaces';
 import AddExerciseView from './AddExerciseView';
+import trash from '../../assets/trash.png';
 
 function CreateRoutine() {
   const navigate = useNavigate();
   const [workoutRoutines, setWorkoutRoutines] = useLocalStorage<Workout[]>('workoutRoutines', []);
-  const [newWorkout, setNewWorkout] = useState<Workout>({ name: 'Workout Name', exercises: [] });
+  const [newWorkout, setNewWorkout] = useState<Workout>({ name: '', exercises: [] });
   const [addExerciseView, setAddExerciseView] = useState(false);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -27,13 +28,13 @@ function CreateRoutine() {
   }
 
   return (
-    <div>
+    <div className="create-routine">
       <form onSubmit={handleSubmit}>
         <input
-          id="workoutName"
           type="text"
           value={newWorkout.name}
           onChange={(event) => setNewWorkout({ ...newWorkout, name: event.target.value })}
+          placeholder="Workout Name"
         />
         <br />
 
@@ -46,19 +47,31 @@ function CreateRoutine() {
             />
           )
 
-          : <button type="submit" onClick={() => setAddExerciseView(true)}>Add Exercise</button>}
-
-        <br />
-
-        {newWorkout.exercises.map((exercise: string, index: number) => (
-          <>
-            <p key={index}>{exercise}</p>
-            <button type="button" onClick={() => handleDeleteExercise(index)}>Remove</button>
-          </>
-        ))}
-        <br />
-
-        <button type="submit">Save Workout</button>
+          : (
+            <>
+              <button
+                type="submit"
+                className="add-exercise-button"
+                onClick={() => setAddExerciseView(true)}
+              >
+                Add Exercise
+              </button>
+              {newWorkout.exercises.map((exercise: string, index: number) => (
+                <div className="create-routine-exercise-container">
+                  <p key={index} className="exercise-name">{exercise}</p>
+                  <button type="button" onClick={() => handleDeleteExercise(index)}>
+                    <img src={trash} alt="trash can" />
+                  </button>
+                </div>
+              ))}
+              <button
+                type="submit"
+                className="save-workout-button"
+              >
+                Save Workout
+              </button>
+            </>
+          )}
 
       </form>
     </div>

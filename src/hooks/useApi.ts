@@ -6,11 +6,11 @@ const options = {
   method: 'GET',
   headers: {
     'X-RapidAPI-Key': EXERCISEDB_API_KEY,
-    'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
+    'X-RapidAPI-Host': 'exercises-by-api-ninjas.p.rapidapi.com',
   },
 };
 
-const useApi = (url: string): ApiResponse => {
+function useApi(url: string): ApiResponse {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -32,6 +32,6 @@ const useApi = (url: string): ApiResponse => {
   }, [url]);
 
   return { data, loading, error };
-};
+}
 
 export default useApi;
