@@ -18,9 +18,9 @@
   background-color: white;
   border: 3px solid black;
   border-radius: 5px;
-  top: 30px;
+  top: 50px;
   left: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   cursor: pointer;
   
   .create-new-workout-button-plus-sign {
@@ -104,6 +104,9 @@ h2 {
   color: #000000;
   margin-bottom: 50px;
   width: 80vw;
+  position: relative;
+  top: -15px;
+  left: -3px;
 }
 
 .start-workout-button,

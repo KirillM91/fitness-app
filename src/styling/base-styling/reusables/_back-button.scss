@@ -1,0 +1,13 @@
+.reusable-back-button {
+  position: absolute;
+  font-size: 24px;
+  border: none;
+  background: transparent;
+  font-family: Impact, 'Arial Narrow Bold', sans-serif;
+  cursor: pointer;
+  z-index: 100;
+  span {
+    position: relative;
+    top: -3px;
+  }
+}

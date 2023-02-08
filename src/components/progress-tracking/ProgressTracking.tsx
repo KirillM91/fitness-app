@@ -10,6 +10,7 @@ import {
 } from 'recharts';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { Exercise } from '../../interfaces/interfaces';
+import BackButton from '../reusables/BackButton';
 
 function ProgressTracking() {
   const [selectedExercise, setSelectedExercise] = useState<Exercise>();
@@ -26,39 +27,57 @@ function ProgressTracking() {
   });
 
   return (
-    <>
-      {exerciseProgress.map((exercise: Exercise) => (
-        <button
-          key={exercise.name}
-          onClick={() => setSelectedExercise(exercise)}
-          type="button"
-        >
-          {exercise.name}
-        </button>
-      ))}
-      {selectedExercise ? (
-        <ResponsiveContainer width={700} height={400}>
-          <LineChart
-            data={formattedExerciseData}
-            margin={{
-              top: 20,
-              right: 20,
-              bottom: 20,
-              left: 20
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="date" padding={{ left: 50, right: 50 }} />
-            <YAxis dataKey="weight" padding={{ top: 50 }} />
-            <Tooltip />
-            <Line type="monotone" dataKey="weight" stroke="#850e0e" strokeWidth={5} dot={{ stroke: '#ff0000', strokeWidth: 3 }} />
-          </LineChart>
-        </ResponsiveContainer>
-      ) : (
-        <p>Please select an exercise to view its progress</p>
+    <div className="progress-tracking">
+      <BackButton x={1} y={10} />
+      {/* eslint-disable-next-line max-len */}
+      <select onChange={(e) => setSelectedExercise(exerciseProgress.find((exercise: Exercise) => exercise.name === e.target.value))}>
+        <option value="">--Select an exercise--</option>
+        {exerciseProgress.map((exercise: Exercise) => (
+          <option key={exercise.name} value={exercise.name}>
+            {exercise.name}
+          </option>
+        ))}
+      </select>
+
+      {selectedExercise && (
+        <div className="graph">
+          <ResponsiveContainer width="100%" height={400}>
+            <LineChart
+              data={formattedExerciseData}
+              margin={{
+                top: 20,
+                right: 20,
+                bottom: 90,
+                left: -18
+              }}
+            >
+              <CartesianGrid horizontal={false} vertical={false} />
+              <XAxis
+                dataKey="date"
+                padding={{ left: 0, right: 30 }}
+                angle={270}
+                dy={50}
+                dx={-5}
+                interval={0}
+              />
+              <YAxis
+                dataKey="weight"
+                padding={{ top: 50 }}
+              />
+              <Tooltip />
+              <Line
+                type="monotone"
+                dataKey="weight"
+                stroke="#138500"
+                strokeWidth={5}
+                dot={{ stroke: '#0d5700', strokeWidth: 3 }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
       )}
 
-    </>
+    </div>
   );
 }
 

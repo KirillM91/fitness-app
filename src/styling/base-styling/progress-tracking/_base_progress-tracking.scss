@@ -1,0 +1,24 @@
+.progress-tracking {
+  select {
+    position: relative;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 40px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0px 8px;
+  }
+
+  .graph {
+    font-family: 'Courier New', Courier, monospace;
+    height: 100vw;
+    .recharts-responsive-container {
+      position: relative;
+      top: 40%;
+    }
+  }
+}

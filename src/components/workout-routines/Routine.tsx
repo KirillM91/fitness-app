@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import Routines from '../../assets/Routines';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { Workout } from '../../interfaces/interfaces';
+import BackButton from '../reusables/BackButton';
 import WorkoutStartedView from './WorkoutStartedView';
 
 function Routine() {
@@ -29,6 +30,7 @@ function Routine() {
           .map((workout: Workout, index: number) => (
             <div key={index}>
               <h2>{workout.name}</h2>
+              <BackButton x={2} y={65} />
               <ul>
                 {workout.exercises.map((exercise, i) => (
                   <li key={i}>{exercise}</li>

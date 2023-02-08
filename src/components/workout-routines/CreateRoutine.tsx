@@ -6,6 +6,7 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import { Workout } from '../../interfaces/interfaces';
 import AddExerciseView from './AddExerciseView';
 import trash from '../../assets/trash.png';
+import BackButton from '../reusables/BackButton';
 
 function CreateRoutine() {
   const navigate = useNavigate();
@@ -29,6 +30,8 @@ function CreateRoutine() {
 
   return (
     <div className="create-routine">
+
+      <BackButton x={8} y={10} />
       <form onSubmit={handleSubmit}>
         <input
           type="text"

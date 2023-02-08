@@ -2,6 +2,7 @@
 @import './exercise-database/base_exercise-database';
 @import './workout-routines/base_workout-routines';
 @import './workout-routines/base_create-routine';
+@import './progress-tracking/base_progress-tracking';
 
 *{
   margin: 0;
@@ -20,7 +21,7 @@ a {
 .exercise-database-text, 
 .workout-routines-text, 
 .progress-tracing-text {
-  width: 33vw;
+  width: clamp(10vw, 150px, 33vw);
 }
 
 .paused {

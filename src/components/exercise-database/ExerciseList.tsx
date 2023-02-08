@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import useApi from '../../hooks/useApi';
+import BackButton from '../reusables/BackButton';
 
 function ExerciseList() {
   const muscle = useParams();
@@ -10,6 +11,7 @@ function ExerciseList() {
   return (
     <div className="exeecise-list">
       <p className="exercise-list-title">{muscle.target}</p>
+      <BackButton x={5} y={75} />
 
       {loading && <p>Loading. . .</p>}
 

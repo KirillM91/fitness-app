@@ -34,12 +34,15 @@
 }
 
 .exercise-list-title {
-  font-family: 'Impact';
+  font-family: "Impact";
   font-weight: 400;
-  font-size: 97px;
+  font-size: 66px;
   letter-spacing: 0.1em;
   color: #000000;
   margin-bottom: 50px;
+  position: relative; 
+  top: -15px;
+  left: -3px;   
 }
 
 .exercise-list-exercise-container {
@@ -47,6 +50,7 @@
   grid-template-columns: auto 1fr;
   grid-gap: 10px;
   margin: 0 10px 50px 20px;
+  cursor: pointer;
 
 
   .exercise-list-exercise-image{

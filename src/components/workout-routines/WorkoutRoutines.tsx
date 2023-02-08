@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Routines from '../../assets/Routines';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { Workout } from '../../interfaces/interfaces';
+import BackButton from '../reusables/BackButton';
 
 function WorkoutRoutines() {
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
@@ -14,6 +15,8 @@ function WorkoutRoutines() {
 
   return (
     <div>
+      <BackButton x={8} y={10} />
+
       <Link to="/workout_routines/create_workout">
         <button type="button" className="create-new-workout-button">
           <span className="create-new-workout-button-plus-sign">

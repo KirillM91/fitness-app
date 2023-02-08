@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Routines from '../../assets/Routines';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { Exercise } from '../../interfaces/interfaces';
+import BackButton from '../reusables/BackButton';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function WorkoutStartedView({ currentWorkout }: any) {
@@ -46,6 +47,7 @@ function WorkoutStartedView({ currentWorkout }: any) {
     <div className="workout-started-view">
       <form onSubmit={finishWorkout}>
         <h2>{currentWorkout.name}</h2>
+        <BackButton x={2} y={65} />
         {currentWorkout.exercises.map((exercise: string) => (
           <div key={exercise} className="exercise">
             <p>{exercise}</p>
