@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import backArrow from '../../assets/icons8-back-24.png';
 
+// Just a back button with eazy positioning setup
+
 type Props = {
   x: number;
   y: number;

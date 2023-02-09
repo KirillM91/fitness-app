@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
 import React, { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -6,7 +7,6 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import { Exercise } from '../../interfaces/interfaces';
 import BackButton from '../reusables/BackButton';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function WorkoutStartedView({ currentWorkout }: any) {
   const navigate = useNavigate();
   const [exerciseProgress, setExerciseProgress] = useLocalStorage<Exercise[]>('exerciseProgress', []);
@@ -21,13 +21,21 @@ function WorkoutStartedView({ currentWorkout }: any) {
   }
 
   function handleExerciseDone(exercise: string) {
+    // Array with names of finished exercises, to disable the corresponding inputs and buttons
     setSelectedExercises([...selectedExercises, exercise]);
     if (!newExercise) return;
 
+    // Black magic ritual fueld by sweat and tears
+    // Checks if an exercise with the same name as newExercise exists in the exerciseProgress
+    // If it exists, finds the index of that exercise object in the exerciseProgress array
+    // This index is then used to access the same object in the updatedExercises array
+    // The weights property  is then updated
+    // If it doesnt exist, newExercise is added to the exerciseProgress
     const exerciseToUpdate = exerciseProgress.find((exe: Exercise) => exe.name === newExercise.name);
     if (exerciseToUpdate) {
       const updatedExercises = [...exerciseProgress];
-      updatedExercises[exerciseProgress.indexOf(exerciseToUpdate)].weights = [...exerciseToUpdate.weights, ...newExercise.weights];
+      const index = exerciseProgress.indexOf(exerciseToUpdate);
+      updatedExercises[index].weights = [...exerciseToUpdate.weights, ...newExercise.weights];
       setExerciseProgress(updatedExercises);
     } else {
       setExerciseProgress([...exerciseProgress, newExercise]);
@@ -38,8 +46,6 @@ function WorkoutStartedView({ currentWorkout }: any) {
 
   function finishWorkout(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // eslint-disable-next-line no-alert
-    alert('Good Job!');
     navigate('/workout_routines/');
   }
 

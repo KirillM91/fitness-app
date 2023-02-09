@@ -60,8 +60,8 @@ function CreateRoutine() {
                 Add Exercise
               </button>
               {newWorkout.exercises.map((exercise: string, index: number) => (
-                <div className="create-routine-exercise-container">
-                  <p key={index} className="exercise-name">{exercise}</p>
+                <div className="create-routine-exercise-container" key={index}>
+                  <p className="exercise-name">{exercise}</p>
                   <button type="button" onClick={() => handleDeleteExercise(index)}>
                     <img src={trash} alt="trash can" />
                   </button>

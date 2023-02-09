@@ -1,21 +1,28 @@
-/* eslint-disable max-len */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable react/no-array-index-key */
-import React from 'react';
-import { Link } from 'react-router-dom';
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Link, useNavigate } from 'react-router-dom';
 import Routines from '../../assets/Routines';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { Workout } from '../../interfaces/interfaces';
-import BackButton from '../reusables/BackButton';
+import backArrow from '../../assets/icons8-back-24.png';
 
 function WorkoutRoutines() {
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const [workoutRoutine, setWorkoutRoutine] = useLocalStorage<Workout[]>('workoutRoutines', []);
   const routinesTextClassName = 'workout-routines-text-bg';
+  const navigate = useNavigate();
 
   return (
-    <div>
-      <BackButton x={8} y={10} />
+    <div className="workout-routines">
+      <button
+        type="button"
+        onClick={() => navigate('/')}
+        className="reusable-back-button"
+        style={{ left: '8px', top: '10px' }}
+      >
+        <img src={backArrow} alt="" />
+        <span>Back</span>
+      </button>
 
       <Link to="/workout_routines/create_workout">
         <button type="button" className="create-new-workout-button">

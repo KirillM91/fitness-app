@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable spaced-comment */
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -16,6 +17,7 @@ function ProgressTracking() {
   const [selectedExercise, setSelectedExercise] = useState<Exercise>();
   const [exerciseProgress, setExerciseProgress] = useLocalStorage('exerciseProgress', []);
 
+  // Converts the ugly default date format to a beautiful clean format :)
   const formattedExerciseData = selectedExercise?.weights.map((item) => {
     const date = new Date(item.date);
     const formattedDate = date.toLocaleDateString('sv-SE', {
@@ -29,7 +31,6 @@ function ProgressTracking() {
   return (
     <div className="progress-tracking">
       <BackButton x={1} y={10} />
-      {/* eslint-disable-next-line max-len */}
       <select onChange={(e) => setSelectedExercise(exerciseProgress.find((exercise: Exercise) => exercise.name === e.target.value))}>
         <option value="">--Select an exercise--</option>
         {exerciseProgress.map((exercise: Exercise) => (

@@ -8,7 +8,7 @@ function ExerciseDatabase() {
 
   return (
     <div className="exercise-database">
-      <BackButton x={-50} y={1} />
+      <BackButton x={2} y={10} />
       {targetMuscleList.map((muscle, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <Link to={`/exercise_database/${muscle}`} key={index}>

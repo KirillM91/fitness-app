@@ -1,11 +1,14 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable max-len */
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import useApi from '../../hooks/useApi';
 import useSearch from '../../hooks/useSearch';
 import { ExcerciseData } from '../../interfaces/interfaces';
 
-// eslint-disable-next-line react/prop-types, @typescript-eslint/no-explicit-any
 function AddExerciseView({ setAddExerciseView, newWorkout, setNewWorkout }: any) {
   const API_URL = 'https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises?muscle=';
   const { data, loading, error } = useApi(API_URL);
@@ -24,6 +27,7 @@ function AddExerciseView({ setAddExerciseView, newWorkout, setNewWorkout }: any)
       setNewWorkout({ ...newWorkout, exercises: [...newWorkout.exercises, name] });
     }
   }
+
   return (
     <div className="add-exercise-view">
       <button type="button" onClick={() => setAddExerciseView(false)} className="done-button">Done</button>
@@ -34,18 +38,15 @@ function AddExerciseView({ setAddExerciseView, newWorkout, setNewWorkout }: any)
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Search for an exercise"
+        placeholder="🔍 Search for an exercise"
       />
 
       {loading && <p>Loading. . .</p>}
 
-      {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
       {error && <p>Error: {error}</p>}
 
-      {/* eslint-disable-next-line max-len */}
       {data && (searchTerm.length > 0 ? filteredExercises : data).map((exercise: ExcerciseData, index: number) => (
         <div
-          // eslint-disable-next-line react/no-array-index-key
           key={index}
           onClick={(event) => handleAddExercise(event, exercise.name)}
           className={`exercise-list-exercise-container ${(newWorkout.exercises.find((exe: string) => exe === exercise.name)) ? 'clicked' : ''}`}

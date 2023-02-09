@@ -10,7 +10,9 @@
       -ms-flex-pack: center;
           justify-content: center;
   bottom: 0;
-  left: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 .navigation a {
@@ -19,9 +21,9 @@
 
 .exercise-database-text-bg {
   position: fixed;
-  height: 110%;
-  left: 165px;
-  bottom: -33px;
+  height: 100%;
+  right: -38px;
+  bottom: 0px;
   z-index: -1;
 }
 
@@ -33,27 +35,13 @@
 .exercise-database {
   position: relative;
   height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: clamp(50vw, 400px, 100vw);
+  overflow-x: hidden;
+  z-index: 10;
+  padding: 50px 27px 0 27px;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  gap: 10px;
-  z-index: 10;
 }
 
 .exercise-database a {
@@ -62,6 +50,14 @@
   font-size: 50px;
   letter-spacing: 0.1em;
   color: #000000;
+}
+
+.exercise-list {
+  position: relative;
+  width: clamp(50vw, 400px, 100vw);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 .exercise-list-title {
@@ -119,7 +115,7 @@
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   grid-row: 2 / 3;
-  font-family: 'GFS Neohellenic', monospace;
+  font-family: 'Courier New', Courier, monospace;
   font-size: 20px;
 }
 
@@ -130,21 +126,52 @@
   -ms-grid-row: 3;
   -ms-grid-row-span: 1;
   grid-row: 3 / 4;
-  font-family: 'GFS Neohellenic', monospace;
+  font-family: 'Courier New', Courier, monospace;
   font-size: 20px;
+}
+
+.exercise-description-container {
+  position: absolute;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
+  z-index: 400;
+  cursor: pointer;
+}
+
+.exercise-description-container .exercise-description-name {
+  font-family: 'Impact';
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+
+.exercise-description-container .exercise-description {
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .workout-routines-text-bg {
   position: fixed;
-  height: 114%;
-  left: 205px;
-  bottom: -25px;
+  height: 110%;
+  right: -38px;
+  bottom: 0px;
   z-index: -1;
 }
 
 .workout-routines-text-bg text {
   stroke: #a4440038;
   stroke-width: 3;
+}
+
+.workout-routines {
+  position: relative;
+  width: clamp(50vw, 400px, 100vw);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  height: 100vh;
 }
 
 .create-new-workout-button {
@@ -173,6 +200,7 @@
   border-radius: 5px;
   margin: 30px;
   padding: 30px;
+  width: 340px;
 }
 
 .workout-routine-box h3 {
@@ -190,13 +218,21 @@
 }
 
 .workout-routine-box ul li {
-  font-family: 'GFS Neohellenic', monospace;
+  font-family: 'Courier New', Courier, monospace;
   color: black;
   margin-bottom: 5px;
 }
 
+.routine {
+  position: relative;
+  width: clamp(50vw, 400px, 100vw);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
 .routine div {
-  height: 100vh;
+  height: 95vh;
 }
 
 .routine div ul {
@@ -260,6 +296,15 @@ h2 {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+}
+
+.workout-started-view {
+  position: relative;
+  width: clamp(50vw, 400px, 100vw);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  height: 95vh;
 }
 
 .workout-started-view form .exercise {
@@ -332,6 +377,12 @@ h2 {
 }
 
 .create-routine {
+  position: relative;
+  width: clamp(50vw, 400px, 100vw);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  height: 95vh;
   padding: 0 15px;
 }
 
@@ -342,7 +393,7 @@ h2 {
   border-radius: 5px;
   font-size: 16px;
   text-align: center;
-  margin: 20px 0 20px 20px;
+  margin: 20px 0 10px 20px;
   position: relative;
   top: 40px;
 }
@@ -397,8 +448,8 @@ h2 {
   font-size: 16px;
   border: 3px solid black;
   position: relative;
-  margin: 0 0 50px 20px;
-  top: 40px;
+  margin: 0 0 90px 20px;
+  top: 50px;
 }
 
 .create-routine form .save-workout-button {
@@ -428,15 +479,24 @@ h2 {
   letter-spacing: 0.1em;
   color: #000000;
   cursor: pointer;
-  top: 20px;
+  top: 5px;
   right: 20px;
 }
 
 .add-exercise-view .search-exercise {
   height: 35px;
   border: 2px solid black;
-  margin: 0 20px 30px 20px;
+  margin: 0 20px 80px 20px;
   width: 200px;
+}
+
+.progress-tracking {
+  position: relative;
+  width: clamp(50vw, 400px, 100vw);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  height: 95vh;
 }
 
 .progress-tracking select {
@@ -456,7 +516,7 @@ h2 {
 
 .progress-tracking .graph {
   font-family: 'Courier New', Courier, monospace;
-  height: 100vw;
+  height: 60vw;
 }
 
 .progress-tracking .graph .recharts-responsive-container {

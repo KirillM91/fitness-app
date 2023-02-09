@@ -1,14 +1,22 @@
 .workout-routines-text-bg {
   position: fixed;
-  height: 114%;
-  left: 205px;
-  bottom: -25px;
+  height: 110%;
+  right: -38px;
+  bottom: 0px;
   z-index: -1;
 
   text {
     stroke: #a4440038;
     stroke-width: 3;
   }
+}
+
+.workout-routines {
+  position: relative;
+  width: clamp(50vw, 400px, 100vw);
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100vh;
 }
 
 .create-new-workout-button {
@@ -37,6 +45,7 @@
   border-radius: 5px;
   margin: 30px;
   padding: 30px;
+  width: 340px;
 
   h3 {
     font-family: 'Impact';
@@ -52,7 +61,7 @@
     list-style-type: none;
 
     li {
-      font-family: 'GFS Neohellenic', monospace;
+      font-family: 'Courier New', Courier, monospace;
       color: black;
       margin-bottom: 5px;
     }
@@ -62,8 +71,13 @@
 
 
 .routine {
+  position: relative;
+  width: clamp(50vw, 400px, 100vw);
+  left: 50%;
+  transform: translateX(-50%);
+
   div {
-    height: 100vh;
+    height: 95vh;
 
     ul {
       margin: 20px;
@@ -128,6 +142,11 @@ h2 {
 }
 
 .workout-started-view {
+  position: relative;
+  width: clamp(50vw, 400px, 100vw);
+  left: 50%;
+  transform: translateX(-50%);
+  height: 95vh;
   form {    
     .exercise {
       display: flex;

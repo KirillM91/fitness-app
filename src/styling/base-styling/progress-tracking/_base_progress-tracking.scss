@@ -1,4 +1,10 @@
 .progress-tracking {
+  position: relative;
+  width: clamp(50vw, 400px, 100vw);
+  left: 50%;
+  transform: translateX(-50%);
+  height: 95vh;
+
   select {
     position: relative;
     top: 50px;
@@ -15,7 +21,7 @@
 
   .graph {
     font-family: 'Courier New', Courier, monospace;
-    height: 100vw;
+    height: 60vw;
     .recharts-responsive-container {
       position: relative;
       top: 40%;

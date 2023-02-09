@@ -1,8 +1,8 @@
 .exercise-database-text-bg {
   position: fixed;
-  height: 110%;
-  left: 165px;
-  bottom: -33px;
+  height: 100%;
+  right: -38px;
+  bottom: 0px;
   z-index: -1;
 
   text {
@@ -14,15 +14,12 @@
 .exercise-database {
   position: relative;
   height: 100vh;
-  display: flex;
-  flex-flow: column;
-  align-items: flex-start;
-  justify-content: center;
-  width: fit-content;
+  width: clamp(50vw, 400px, 100vw);
+  overflow-x: hidden;
+  z-index: 10;
+  padding: 50px 27px 0 27px;
   left: 50%;
   transform: translateX(-50%);
-  gap: 10px;
-  z-index: 10;
 
   a {
     font-family: 'Impact';
@@ -31,6 +28,13 @@
     letter-spacing: 0.1em;
     color: #000000;    
   }
+}
+
+.exercise-list {
+  position: relative;
+  width: clamp(50vw, 400px, 100vw);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .exercise-list-title {
@@ -74,14 +78,37 @@
   .exercise-list-target {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
-    font-family: 'GFS Neohellenic', monospace;
+    font-family: 'Courier New', Courier, monospace;
     font-size: 20px;
   }
 
   .exercise-list-equipment {
     grid-column: 2 / 3;
     grid-row: 3 / 4;
-    font-family: 'GFS Neohellenic', monospace;
+    font-family: 'Courier New', Courier, monospace;
     font-size: 20px;
   }
+}
+
+.exercise-description-container {
+  position: absolute;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
+  z-index: 400;
+  cursor: pointer;
+
+  .exercise-description-name {
+    font-family: 'Impact';
+    font-size: 24px; 
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+
+  .exercise-description {
+    font-family: 'Courier New', Courier, monospace;
+  }
+
 }

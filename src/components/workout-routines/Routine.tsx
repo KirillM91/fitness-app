@@ -8,24 +8,24 @@ import BackButton from '../reusables/BackButton';
 import WorkoutStartedView from './WorkoutStartedView';
 
 function Routine() {
-  // const navigate = useNavigate();
   const routine = useParams();
   const [workoutRoutine, setWorkoutRoutine] = useLocalStorage<Workout[]>('workoutRoutines', []);
   const [currentWorkout, setCurrentWorkout] = useState<Workout | null>(null);
   const routinesTextClassName = 'workout-routines-text-bg';
 
+  // Creates a new array that doesnt include the workout to be deleted
   function handleDeleteWorkout(index: number) {
-    // Create a new array that doesn't include the workout to be deleted
     const updatedWorkoutRoutines = workoutRoutine.filter(
       (workout: Workout, i: number) => i !== index
     );
     setWorkoutRoutine(updatedWorkoutRoutines);
-    // navigate('/workout_routines/');
   }
 
+  // If no workout state is set, a routine view is shown. Else WorkoutStartedView view is shown
   if (!currentWorkout) {
     return (
       <div className="routine">
+        {/* Filters out a routine with the same name as the path and maps that routine out  */}
         {workoutRoutine.filter((workout: Workout) => workout.name === routine.workout)
           .map((workout: Workout, index: number) => (
             <div key={index}>

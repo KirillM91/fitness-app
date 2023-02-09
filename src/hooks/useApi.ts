@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from 'react';
 import EXERCISEDB_API_KEY from '../top-secret';
 import { ApiResponse } from '../interfaces/interfaces';
@@ -22,7 +23,6 @@ function useApi(url: string): ApiResponse {
         const response = await fetch(url, options);
         const json = await response.json();
         setData(json);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (err: any) {
         setError(err);
       }

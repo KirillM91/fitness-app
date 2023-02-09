@@ -1,4 +1,9 @@
 .create-routine {
+  position: relative;
+  width: clamp(50vw, 400px, 100vw);
+  left: 50%;
+  transform: translateX(-50%);
+  height: 95vh;
   padding: 0 15px;
   form {
     input {
@@ -8,7 +13,7 @@
       border-radius: 5px;
       font-size: 16px;
       text-align: center;
-      margin: 20px 0 20px 20px;
+      margin: 20px 0 10px 20px;
       position: relative;
       top: 40px;
 
@@ -55,8 +60,8 @@
       font-size: 16px;
       border: 3px solid black;
       position: relative;
-      margin: 0 0 50px 20px;
-      top: 40px;
+      margin: 0 0 90px 20px;
+      top: 50px;
     }
 
     .save-workout-button {
@@ -87,7 +92,7 @@
     letter-spacing: 0.1em;      
     color: #000000;
     cursor: pointer; 
-    top: 20px;
+    top: 5px;
     right: 20px;
 
   }
@@ -95,7 +100,7 @@
   .search-exercise {
     height: 35px;
     border: 2px solid rgb(0, 0, 0);
-    margin: 0 20px 30px 20px;
+    margin: 0 20px 80px 20px;
     width: 200px;
     
   }

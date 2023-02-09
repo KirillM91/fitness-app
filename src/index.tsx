@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
-import ExerciseInfo from './components/exercise-database/ExerciseInfo';
 import ExerciseList from './components/exercise-database/ExerciseList';
 import ExerciseDatabase from './components/exercise-database/ExerciseDatabase';
 import WorkoutRoutines from './components/workout-routines/WorkoutRoutines';
@@ -31,7 +30,6 @@ root.render(
         {/* Excercise database */}
         <Route path="/exercise_database" element={<ExerciseDatabase />} />
         <Route path="/exercise_database/:target" element={<ExerciseList />} />
-        <Route path="/exercise_database/:target/:id" element={<ExerciseInfo />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

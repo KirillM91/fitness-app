@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from 'react';
 import fuzzysort from 'fuzzysort';
 import { ExcerciseData } from '../interfaces/interfaces';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// FUZZYSORT DOCUMENTATION https://www.npmjs.com/package/fuzzysort
+
 function useSearch(data: any) {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredExercises, setFilteredExercises] = useState([]);
