@@ -1,12 +1,18 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from 'react';
-import EXERCISEDB_API_KEY from '../top-secret';
 import { ApiResponse } from '../interfaces/interfaces';
+
+const API_KEY = process.env.EXERCISEDB_API_KEY;
+
+if (!API_KEY) {
+  throw new Error('API_KEY is not defined');
+}
 
 const options = {
   method: 'GET',
   headers: {
-    'X-RapidAPI-Key': EXERCISEDB_API_KEY,
+    'X-RapidAPI-Key': API_KEY,
     'X-RapidAPI-Host': 'exercises-by-api-ninjas.p.rapidapi.com',
   },
 };
