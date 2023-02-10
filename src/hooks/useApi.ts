@@ -3,16 +3,18 @@
 import { useState, useEffect } from 'react';
 import { ApiResponse } from '../interfaces/interfaces';
 
-const API_KEY = process.env.EXERCISEDB_API_KEY;
+// const API_KEY = process.env.EXERCISEDB_API_KEY;
 
-if (!API_KEY) {
-  throw new Error('API_KEY is not defined');
-}
+// if (!API_KEY) {
+//   throw new Error('API_KEY is not defined');
+// }
 
 const options = {
   method: 'GET',
   headers: {
-    'X-RapidAPI-Key': API_KEY,
+    // I know doing this is bad. This key is not important.
+    // It is not possible to 100% hide it, with just frontend.
+    'X-RapidAPI-Key': '0ca525e37bmsh988f671562b64b1p1ddf73jsnc73f2b2c8d66',
     'X-RapidAPI-Host': 'exercises-by-api-ninjas.p.rapidapi.com',
   },
 };
