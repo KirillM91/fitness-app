@@ -20,11 +20,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### NPM packages used:
 
-FUZZYSORT - Provides a way to search and match strings based on their similarity. Used for search functionality in the app.
-https://www.npmjs.com/package/fuzzysort?activeTab=readme
+[FUZZYSORT](https://www.npmjs.com/package/fuzzysort?activeTab=readme) - Provides a way to search and match strings based on their similarity. Used for search functionality in the app.
 
-RECHARTS - Used for creating the progress tracking graph.
-https://recharts.org/en-US/guide
+
+[RECHARTS](https://recharts.org/en-US/guide) - Used for creating the progress tracking graph.
+
 
 
 
