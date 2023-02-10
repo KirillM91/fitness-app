@@ -3,6 +3,7 @@
 ## Live App
 
 For the best experience please use a mobile view. 
+
 https://kirillm91.github.io/fitness-app/
 
 ## Info
@@ -24,4 +25,7 @@ https://www.npmjs.com/package/fuzzysort?activeTab=readme
 
 RECHARTS - Used for creating the progress tracking graph.
 https://recharts.org/en-US/guide
+
+
+
 
